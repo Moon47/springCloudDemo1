@@ -1,0 +1,24 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: user-ui
+eureka:
+  client:
+    service-url:
+      default zone: http://localhost:8761/eureka
+    fetch-registry: true
+
+#降级响应设置超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+
+#开启feign的服务降级
+feign:
+  circuit breaker:
+    enabled: true

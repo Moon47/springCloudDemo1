@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: hystrix-dashboard
+server:
+  port: 9999
+#?????????
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: localhost

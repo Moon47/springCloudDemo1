@@ -1,0 +1,30 @@
+server:
+  port: 8001
+
+#每个服务都要有指定的name,此name就是当前系统中服务的唯一标识(服务id)
+spring:
+  application:
+    name: goods-provider
+  datasource:
+    druid:
+      #如果是8.X版本数据库，驱动应该是:com.mysql.cj.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      #如果是8.X版本数据库，url必须要设置时区(  serverTimezone=UTC )
+      url: jdbc:mysql://localhost:3306/pratice?userSSL=false&serverTimezone=UTC
+      username: root
+      #自己的密码
+      password: root
+mybatis:
+  #mapper文件所在的位置
+  mapper-locations: classpath:mappers/*Mapper.xml
+  #对应的实体类所在的包名(在Mapper文件中使用实体类时只需要类名即可，不需要指明哪个包)
+  type-aliases-package: com.example.goodscommon.pojo
+
+#指定当前服务注册的 '服务注册与发现中心'的地址
+eureka:
+  client:
+    service-url:
+      defaultzone: http://localhost:8761/eureka
+    fetch-registry: true
+
+
